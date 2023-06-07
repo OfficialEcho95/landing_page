@@ -1,9 +1,8 @@
-/* CSS styles for the landing page */
-        /* Customize the styles based on your requirements */
+
 body {
         font-family: Arial, sans-serif;
         text-align: center;
-        background-image: url("C:/Users/user/Desktop/weather.jpeg"); /* Replace with the path to your image */
+        background-image: url("https://drive.google.com/file/d/1mwN9s4_AOhCnc98ccXw0eHiRoXVGL44h/view?usp=drive_link"); 
         background-repeat: no-repeat;
         background-size: cover;
 }
