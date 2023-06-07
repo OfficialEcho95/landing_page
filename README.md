@@ -1,0 +1,1 @@
+This is my landing page for my portfolio project, A weather app that gives weather forcast

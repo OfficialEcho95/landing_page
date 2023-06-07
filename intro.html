@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="intro.css">
+    <title>Weather App Landing Page</title>
+    
+</head>
+<body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <h1>Today's Weather</h1>
+    <p>Get real-time weather updates for your location or anywhere. Just search for the place</p>
+
+    <div class="content-container">
+        <!-- Other content or sections above the search container -->
+
+        <div class="search-container">
+            <input type="text" placeholder="Enter a location" id="search-input">
+            <button class="cta-button-search">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+        </div>
+
+        <div id="date-time-container">
+            <p id="date"></p>
+            <p id="time" class="wall-clock"></p>
+            <p id="location"></p>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script>
+        var searchInput = document.getElementById('search-input');
+        var searchButton = document.querySelector('.cta-button-search');
+        var dateElement = document.getElementById('date');
+        var timeElement = document.getElementById('time');
+        var locationElement = document.getElementById('location');
+
+        searchButton.addEventListener('click', function() {
+            var location = searchInput.value;
+
+            // Perform the search or any other action based on the entered location
+            console.log('Search location:', location);
+
+            // Clear the search input
+            searchInput.value = '';
+        });
+
+        // Function to update the date and time
+        function updateTime() {
+            var currentTime = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+            // Display the date
+            dateElement.textContent = currentTime.toLocaleDateString(undefined, options);
+
+            // Display the time
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            var timeString = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            timeElement.textContent = timeString;
+
+            // Update the clock display every second
+            setTimeout(updateTime, 1000);
+        }
+
+        // Function to get user's current location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLocation, showError);
+            } else {
+                locationElement.textContent = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        // Function to display user's current location
+            function showLocation(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Perform the necessary actions with latitude and longitude
+                console.log('Latitude:', latitude);
+                console.log('Longitude:', longitude);
+
+                // Use reverse geocoding to get the address
+                var geocoder = new google.maps.Geocoder();
+                var latLng = new google.maps.LatLng(latitude, longitude);
+
+                geocoder.geocode({ location: latLng }, function (results, status) {
+                    if (status === "OK" && results[0]) {
+                        var address = results[0].formatted_address;
+                        locationElement.textContent = `Your current location: ${address}`;
+                    } else {
+                        locationElement.textContent = "Location information is unavailable.";
+                    }
+                });
+            }
+        // Function to handle geolocation errors
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    locationElement.textContent = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    locationElement.textContent = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    locationElement.textContent = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    locationElement.textContent = "An unknown error occurred.";
+                    break;
+            }
+        }
+
+        // Call the functions to update the time and get user's location
+        updateTime();
+        getLocation();
+    </script>
+</body>
+</html>
