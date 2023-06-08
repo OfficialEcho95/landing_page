@@ -1,5 +1,5 @@
 
-body {
+body, header, footer {
         width: 100%;
         font-family: Arial, sans-serif;
         text-align: center;
@@ -136,8 +136,8 @@ header {
     align-content:last baseline;
 }
 
-#about p {
-    padding: 20px 0 20px 0;
+#about p #back_story{
+    margin-bottom: 30px;
     /* align-items: flex-start; */
-    justify-content: left;
+    align-content: end;
 }
