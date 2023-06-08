@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="intro.css">
-    <title>Weather App Landing Page</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>My Website</title>
 </head>
+
 <body>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-    <h1>Today's Weather</h1>
-    <p>Get real-time weather updates for your location or anywhere. Just search for the place</p>
-
-    <div class="content-container">
-        
-
-        <div class="search-container">
-            <input type="text" placeholder="Enter a location" id="search-input">
-            <button class="cta-button-search">
-                <i class="fas fa-search"></i>
-                Search
-            </button>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
+    </nav>
 
-        <div id="date-time-container">
-            <p id="date"></p>
-            <p id="time" class="wall-clock"></p>
-            <p id="location"></p>
+    <div class="container">
+        <h1>Today's Weather</h1>
+        <p>Get real-time weather updates for your location or anywhere. Just search for the place</p>
+
+        <div class="content-container">
+            <div class="search-container">
+                <input type="text" placeholder="Enter a location" id="search-input">
+                <button class="cta-button-search">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </div>
+
+            <div id="date-time-container">
+                <p id="date"></p>
+                <p id="time" class="wall-clock"></p>
+                <p id="location"></p>
+            </div>
         </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         var searchInput = document.getElementById('search-input');
         var searchButton = document.querySelector('.cta-button-search');
@@ -37,7 +63,7 @@
         var timeElement = document.getElementById('time');
         var locationElement = document.getElementById('location');
 
-        searchButton.addEventListener('click', function() {
+        searchButton.addEventListener('click', function () {
             var location = searchInput.value;
 
             // Perform the search or any other action based on the entered location
@@ -77,27 +103,28 @@
         }
 
         // Function to display user's current location
-            function showLocation(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
+        function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
 
-                // Perform the necessary actions with latitude and longitude
-                console.log('Latitude:', latitude);
-                console.log('Longitude:', longitude);
+            // Perform the necessary actions with latitude and longitude
+            console.log('Latitude:', latitude);
+            console.log('Longitude:', longitude);
 
-                // Use reverse geocoding to get the address
-                var geocoder = new google.maps.Geocoder();
-                var latLng = new google.maps.LatLng(latitude, longitude);
+            // Use reverse geocoding to get the address
+            var geocoder = new google.maps.Geocoder();
+            var latLng = new google.maps.LatLng(latitude, longitude);
 
-                geocoder.geocode({ location: latLng }, function (results, status) {
-                    if (status === "OK" && results[0]) {
-                        var address = results[0].formatted_address;
-                        locationElement.textContent = `Your current location: ${address}`;
-                    } else {
-                        locationElement.textContent = "Location information is unavailable.";
-                    }
-                });
-            }
+            geocoder.geocode({ location: latLng }, function (results, status) {
+                if (status === "OK" && results[0]) {
+                    var address = results[0].formatted_address;
+                    locationElement.textContent = `Your current location: ${address}`;
+                } else {
+                    locationElement.textContent = "Location information is unavailable.";
+                }
+            });
+        }
+
         // Function to handle geolocation errors
         function showError(error) {
             switch (error.code) {
@@ -121,4 +148,5 @@
         getLocation();
     </script>
 </body>
+
 </html>
