@@ -50,6 +50,16 @@
                 <p id="time" class="wall-clock"></p>
                 <p id="location"></p>
             </div>
+
+            <div class="weather-info">
+                <!-- Weather information will be dynamically added here -->
+            </div>
+            <div id="weather-report">
+                <div class="weather-icons">
+                    <p>The real time weather report will be shown here</p>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -123,6 +133,9 @@
                     locationElement.textContent = "Location information is unavailable.";
                 }
             });
+
+            // Fetch weather data
+            fetchWeatherData(latitude, longitude);
         }
 
         // Function to handle geolocation errors
@@ -143,10 +156,74 @@
             }
         }
 
+        // Function to fetch weather data from OpenWeatherMap API
+        function fetchWeatherData(latitude, longitude) {
+            var apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your OpenWeatherMap API key
+
+            var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Weather Data:', data);
+
+                    // Extract and display relevant weather information
+                    var temperature = data.main.temp;
+                    var description = data.weather[0].description;
+
+                    var weatherReport = `Current temperature: ${temperature}°C<br>Weather description: ${description}`;
+                    document.querySelector('.weather-info').innerHTML = weatherReport;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    document.querySelector('.weather-info').textContent = "Failed to fetch weather data.";
+                });
+        }
+
         // Call the functions to update the time and get user's location
         updateTime();
         getLocation();
     </script>
+
+    <div id="about">
+        <p>
+            Story
+        </p>
+        <p>
+            As the creator of this weather app, I'd like to share the story behind its inspiration, which comes from my
+            own experiences and passion for adventure.
+
+            Growing up, I was always fascinated by the ever-changing weather patterns and how they influenced our daily
+            lives. Whether it was the warmth of the sun on a summer's day or the excitement of a snowstorm, I found
+            myself constantly drawn to the wonders of nature.
+
+            As I embarked on my own personal adventures, whether it was hiking in the mountains or exploring new cities,
+            I realized how crucial it was to have accurate and up-to-date weather information. The weather had a
+            profound impact on my experiences, from determining the best time to venture out to ensuring I was
+            adequately prepared for the conditions ahead.
+
+            However, I often found myself struggling to find a reliable and user-friendly weather app that provided the
+            precise information I needed. Existing apps seemed to prioritize complex features over simplicity and failed
+            to capture the essence of what I truly sought—a seamless and intuitive weather experience that could
+            accompany me on my journeys.
+
+            Driven by this desire, I set out to create a weather app that would not only deliver accurate forecasts but
+            also offer a visually appealing and easy-to-navigate interface. My goal was to empower users like myself to
+            make informed decisions based on real-time weather updates, regardless of their location.
+
+            Through countless hours of research, development, and refining, I've crafted this weather app with a
+            personal touch. I understand the importance of weather in shaping our daily lives, whether it's planning
+            outdoor activities or simply deciding what to wear. That's why I've made it my mission to provide a reliable
+            and intuitive tool that embraces simplicity without compromising on accuracy.
+        </p>
+        <p><a href="https://github.com/officialecho95/landing_page", target="_blank">
+            <i class="fab fa-github"></i> GitHub
+        </a></p>
+        <p>
+            <a href="https://twitter.com/EchoChukwu", target="_blank"></a>
+            <i class="fab fa-twitter"></i> Twitter
+        </a></p>
+    </div>
 </body>
 
 </html>

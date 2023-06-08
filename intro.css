@@ -111,3 +111,33 @@ header {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    font-size: 18px;
+    height: 40px;
+}
+
+.weather-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#weather-report .weather-icons p {
+    color: white;
+    align-content:last baseline;
+}
+
+#about p {
+    padding: 20px 0 20px 0;
+    /* align-items: flex-start; */
+    justify-content: left;
+}
