@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="C:\Users\user\Desktop\html_lessons\.vscode\landing_page\css\intro.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -17,16 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="#" >Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="services.hmtl">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
                 </li>
             </ul>
         </div>
@@ -48,7 +49,7 @@
             <div id="date-time-container">
                 <p id="date"></p>
                 <p id="time" class="wall-clock"></p>
-                <p id="location"></p>
+                <p id="location" class="locationElement"></p>
             </div>
 
             <div class="weather-info">
@@ -56,8 +57,7 @@
             </div>
             <div id="weather-report">
                 <div class="weather-icons">
-                    <p>The real time weather report will be shown here</p>
-
+                    <p>The real-time weather report is displayed here</p>
                 </div>
             </div>
         </div>
@@ -66,6 +66,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQxEkBya7ommH8C1bVNqTN6jL9gbsob1U&libraries=places"></script> 
     <script>
         var searchInput = document.getElementById('search-input');
         var searchButton = document.querySelector('.cta-button-search');
@@ -158,7 +159,7 @@
 
         // Function to fetch weather data from OpenWeatherMap API
         function fetchWeatherData(latitude, longitude) {
-            var apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your OpenWeatherMap API key
+            var apiKey = '0157d500a1102635ca486b80a6f5780f'; // Replace with your OpenWeatherMap API key
 
             var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
@@ -183,47 +184,7 @@
         // Call the functions to update the time and get user's location
         updateTime();
         getLocation();
-        </script>
-
-<div id="about">
-    <p>
-        Story
-    </p>
-    <p id = "back_story">
-        As the creator of this weather app, I'd like to share the story behind its inspiration, which comes from my
-        own experiences and passion for adventure.
-
-        Growing up, I was always fascinated by the ever-changing weather patterns and how they influenced our daily
-        lives. Whether it was the warmth of the sun on a summer's day or the excitement of a snowstorm, I found
-        myself constantly drawn to the wonders of nature.
-
-        As I embarked on my own personal adventures, whether it was hiking in the mountains or exploring new cities,
-        I realized how crucial it was to have accurate and up-to-date weather information. The weather had a
-        profound impact on my experiences, from determining the best time to venture out to ensuring I was
-        adequately prepared for the conditions ahead.
-
-        However, I often found myself struggling to find a reliable and user-friendly weather app that provided the
-        precise information I needed. Existing apps seemed to prioritize complex features over simplicity and failed
-        to capture the essence of what I truly sought—a seamless and intuitive weather experience that could
-        accompany me on my journeys.
-
-        Driven by this desire, I set out to create a weather app that would not only deliver accurate forecasts but
-        also offer a visually appealing and easy-to-navigate interface. My goal was to empower users like myself to
-        make informed decisions based on real-time weather updates, regardless of their location.
-
-        Through countless hours of research, development, and refining, I've crafted this weather app with a
-        personal touch. I understand the importance of weather in shaping our daily lives, whether it's planning
-        outdoor activities or simply deciding what to wear. That's why I've made it my mission to provide a reliable
-        and intuitive tool that embraces simplicity without compromising on accuracy.
-    </p>
-<p><a href="https://github.com/officialecho95/landing_page", target="_blank">
-    <i class="fab fa-github"></i> GitHub
-</a></p>
-<p>
-    <a href="https://twitter.com/EchoChukwu", target="_blank"></a>
-    <i class="fab fa-twitter"></i> Twitter
-</a></p>
-</div>
+    </script>
 </body>
 
 </html>

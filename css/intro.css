@@ -1,22 +1,29 @@
+body, header {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
 
-body, header, footer {
-        width: 100%;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); 
-        background-repeat: no-repeat;
-        background-size: cover;
+.container {
+    flex: 1;
+    /* Rest of your container styles */
 }
+
 h1 {
-            color: #333;
+    color: #333;
 }
+
 p {
-    
-            color: #ffffff;
+    color: #ffffff;
 }
 
 .cta-button-search {
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,6 +53,10 @@ p {
 
 #date, #time, #location {
     font-size: 18px;
+}
+
+.locationElement {
+    color: white;
 }
 
 .wall-clock {
@@ -112,16 +123,17 @@ header {
 }
 
 .weather-info {
+    /* background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 20px;
     padding: 10px;
-    background-color: #f2f2f2;
+    text-decoration: white;
     border-radius: 5px;
     font-size: 18px;
-    height: 40px;
+    height: 50px;
 }
 
 .weather-icons {
@@ -133,11 +145,25 @@ header {
 
 #weather-report .weather-icons p {
     color: white;
-    align-content:last baseline;
+    align-content: last baseline;
 }
 
-#about p #back_story{
+#about p #back_story {
     margin-bottom: 30px;
-    /* align-items: flex-start; */
     align-content: end;
+}
+
+#location-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#location {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+ 
+.locationElement {
+    color: white;
 }
