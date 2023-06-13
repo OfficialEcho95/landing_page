@@ -1,0 +1,29 @@
+body, header {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+form input {
+    border-radius: 5px;
+    border-color: transparent;
+    width: 220px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+#subscribe {
+    background-color: transparent;
+    color: white;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-color: transparent;
+    align-items: center;
+    margin: 0 auto;
+}

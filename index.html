@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html" >Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
@@ -31,7 +31,11 @@
                 </li>
             </ul>
         </div>
+        <div class="login">
+            <a href="login.html" class="login-button">Login</a>
+        </div>
     </nav>
+
 
     <div class="container">
         <h1>Today's Weather</h1>
@@ -39,11 +43,17 @@
 
         <div class="content-container">
             <div class="search-container">
-                <input type="text" placeholder="Enter a location" id="search-input">
-                <button class="cta-button-search">
-                    <i class="fas fa-search"></i>
-                    Search
-                </button>
+                <form>
+                    <input type="text" placeholder="Enter a location" id="search-input">
+                    <button class="cta-button-search">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            <div id="resultsContainer">
+                <!-- Search results will be displayed here -->
             </div>
 
             <div id="date-time-container">
@@ -55,24 +65,51 @@
             <div class="weather-info">
                 <!-- Weather information will be dynamically added here -->
             </div>
-            <div id="weather-report">
-                <div class="weather-icons">
-                    <p>The real-time weather report is displayed here</p>
-                </div>
+        </div>
+    </div>
+
+    <div class="popular-places-container">
+        <div class="popular-places" id="jos">
+            <div class="jos">
+                <span id="jos-jos">
+                    Weather report for Jos is:
+                </span>
+
+                <div class="weather-info-jos"></div>
+            </div>
+        </div>
+        <div class="popular-places" id="abuja">
+            <div class="abuja">
+                <span id="abuja-abuja">
+                    Weather report for Abuja is:
+                </span>
+                <div class="weather-info-abuja"></div>
+            </div>
+        </div>
+        <div class="popular-places" id="enugu">
+            <div class="enugu">
+                <span id="enugu-enugu">
+                    Weather report for Enugu is:
+                </span>
+                <div class="weather-info-enugu"></div>
             </div>
         </div>
     </div>
 
+    <script src="js/search.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQxEkBya7ommH8C1bVNqTN6jL9gbsob1U&libraries=places"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
     <script>
         var searchInput = document.getElementById('search-input');
         var searchButton = document.querySelector('.cta-button-search');
         var dateElement = document.getElementById('date');
         var timeElement = document.getElementById('time');
         var locationElement = document.getElementById('location');
+        var weatherJosElement = document.querySelector('.weather-info-jos');
+        var weatherAbujaElement = document.querySelector('.weather-info-abuja');
+        var weatherEnuguElement = document.querySelector('.weather-info-enugu');
 
         searchButton.addEventListener('click', function () {
             var location = searchInput.value;
@@ -173,18 +210,117 @@
                     var description = data.weather[0].description;
 
                     var weatherReport = `Current temperature: ${temperature}°C<br>Weather description: ${description}`;
-                    document.querySelector('.weather-info').innerHTML = weatherReport;
+                    // weatherJosElement.innerHTML = weatherReport;
+
+                    //weatherAbujaElement.innerHTML = weatherReport;
+
+                    //weatherEnuguElement.innerHTML = weatherReport;
+
                 })
                 .catch(error => {
                     console.log('Error:', error);
-                    document.querySelector('.weather-info').textContent = "Failed to fetch weather data.";
+                    // weatherJosElement.textContent = "Failed to fetch weather data.";
+                    weatherAbujaElement.textContent = "Failed to fetch weather data.";
+                    weatherEnuguElement.textContent = "Failed to fetch weather data.";
                 });
         }
+
+        //data for jos
+        function fetchWeatherDataJos(latitude = 9.896527, longitude = 8.858331) {
+            var apiKey = '0157d500a1102635ca486b80a6f5780f'; // Replace with your OpenWeatherMap API key
+
+            var apiUrlJos = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+            fetch(apiUrlJos)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Weather Data:', data);
+
+                    // Extract and display relevant weather information
+                    var temperature = data.main.temp;
+                    var description = data.weather[0].description;
+                    var pressure = data.main.pressure;
+                    var visibility = data.main.visibility;
+
+                    var weatherReport = `Temperature: ${temperature}°C <br>Pressure: ${pressure}<br>Visibility: ${visibility}<br>Weather description: ${description}`;
+                    weatherJosElement.innerHTML = weatherReport;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    weatherJosElement.textContent = "Failed to fetch weather data.";
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchWeatherDataJos(); // Call the function to fetch weather data for Jos
+        });
+
+
+        //data for enugu
+        function fetchWeatherDataEnugu(latitude = 6.459964, longitude = 7.548949) {
+            var apiKey = '0157d500a1102635ca486b80a6f5780f'; // Replace with your OpenWeatherMap API key
+
+            var apiUrlEnugu = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+            fetch(apiUrlEnugu)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Weather Data:', data);
+
+                    // Extract and display relevant weather information
+                    var temperature = data.main.temp;
+                    var description = data.weather[0].description;
+                    var pressure = data.main.pressure;
+                    var visibility = data.main.visibility;
+
+                    var weatherReport = `Temperature: ${temperature}°C <br>Pressure: ${pressure}<br>Visibility: ${visibility}<br>Weather description: ${description}`;
+                    weatherEnuguElement.innerHTML = weatherReport;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    weatherEnuguElement.textContent = "Failed to fetch weather data.";
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchWeatherDataEnugu(); // Call the function to fetch weather data for Jos
+        });
+
+
+        //data for abuja
+        function fetchWeatherDataAbuja(latitude = 9.072264, longitude = 7.491302) {
+            var apiKey = '0157d500a1102635ca486b80a6f5780f'; // Replace with your OpenWeatherMap API key
+
+            var apiUrlAbuja = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+            fetch(apiUrlAbuja)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Weather Data:', data);
+
+                    // Extract and display relevant weather information
+                    var temperature = data.main.temp;
+                    var description = data.weather[0].description;
+                    var pressure = data.main.pressure;
+                    var visibility = data.main.visibility;
+
+                    var weatherReport = `Temperature: ${temperature}°C <br>Pressure: ${pressure}<br>Visibility: ${visibility}<br>Weather description: ${description}`;
+                    weatherAbujaElement.innerHTML = weatherReport;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                    weatherAbujaElement.textContent = "Failed to fetch weather data.";
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetchWeatherDataAbuja(); // Call the function to fetch weather data for Jos
+        });
+
 
         // Call the functions to update the time and get user's location
         updateTime();
         getLocation();
     </script>
 </body>
-
 </html>

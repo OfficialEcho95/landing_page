@@ -16,31 +16,62 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html" >Home</a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="services.hmtl">Services</a>
+                    <a class="nav-link" href="services.html">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
                 </li>
             </ul>
         </div>
+        <div class="login">
+            <a href="login.html" class="login-button">Login</a>
+        </div>
     </nav>
+    </nav>
+    
 </head>
 
+
 <body>
-<div id="about">
-    
-    <p><a href="https://github.com/officialecho95/landing_page", target="_blank">
-        <i class="fab fa-github"></i> GitHub
-    </a></p>
-    <p>
-        <a href="https://twitter.com/EchoChukwu", target="_blank"></a>
-        <i class="fab fa-twitter"></i> Twitter
-    </a></p>
-</div>
+    <p id="heading">
+        CONTACT US
+    </p>
+    <form>
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+
+        <button type="submit" id="submit">SUBMIT</button>
+    </form>
+
 </body>
+
+<footer>
+    <div id="about">
+
+        <p><a href="https://github.com/officialecho95/landing_page" , target="_blank">
+                <i class="fab fa-github"></i> GitHub
+            </a></p>
+        <p id="twitter">
+            <a href="https://twitter.com/EchoChukwu" , target="_blank">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+        </p>
+    </div>
+</footer>
+
+</html>

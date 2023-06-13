@@ -9,3 +9,58 @@ body, header {
     min-height: 100vh;
     flex-direction: column;
 }
+
+form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form label {
+    width: 300px;
+    font-weight: bold;
+    /* margin-bottom: 40px; */
+  }
+
+  form input {
+    width: 300px;
+    margin-bottom: 40px;
+  }
+
+  #lname, #email, #message {
+    margin-top: 5px;
+  }
+  form textarea {
+    width: 700px;
+  }
+  
+  #submit {
+    background-color: rgb(5, 5, 22);
+    color: #fcf9f9;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border-color:transparent;
+    margin-top: 13px;
+  }
+
+  footer {
+    margin-top: 50px;
+    background-color: transparent;
+  }
+
+   #heading {
+    margin-top: 10px;
+    color: black;
+    font-size: 40px;
+    font-weight:bolder;
+  }
+
+  #about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #twitter {
+    margin-left: 20px;
+  }

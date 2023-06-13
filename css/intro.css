@@ -2,9 +2,7 @@ body, header {
     width: 100%;
     font-family: Arial, sans-serif;
     text-align: center;
-    background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); 
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: grey;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -27,7 +25,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: #ff7f50;
     color: #fff;
     border: none;
@@ -45,6 +43,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 }
 
 .search-container input {
@@ -130,7 +129,7 @@ header {
     flex-direction: column;
     margin-top: 20px;
     padding: 10px;
-    text-decoration: white;
+    color: white;
     border-radius: 5px;
     font-size: 18px;
     height: 50px;
@@ -163,7 +162,43 @@ header {
     color: #333;
     font-weight: bold;
 }
- 
+
 .locationElement {
     color: white;
 }
+
+.login {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.login-button {
+    margin-right: 1px;
+    color: rgb(157, 157, 179);
+    background-color: rgb(40, 49, 48);
+    border-color: transparent;
+    border-radius: 5px;
+}
+
+.popular-places-container {
+    margin-bottom: 15px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
+.popular-places {
+    margin-bottom: 20px;
+    border: grey;
+    color: white;
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#enugu-enugu {
+    margin-bottom: 10px;
+}
+

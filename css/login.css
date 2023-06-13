@@ -1,0 +1,38 @@
+body {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url("https://raw.githubusercontent.com/OfficialEcho95/landing_page/85cd51fe8491a3beba3d6f356b821039f438dcf4/weather.jpeg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-username {
+    margin-top: 10px;
+}
+
+#form-password {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+input {
+    align-items: end;
+}
+div button {
+    margin-right: -27px;
+}
+button {
+    
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
