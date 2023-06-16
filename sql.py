@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 # MySQL configurations
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'your_username'
-app.config['MYSQL_PASSWORD'] = 'your_password'
-app.config['MYSQL_DB'] = 'your_database_name'
+app.config['MYSQL_USER'] = 'emmanuel'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'weatherapp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # Create MySQL instance
