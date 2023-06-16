@@ -202,3 +202,19 @@ header {
     margin-bottom: 10px;
 }
 
+#session-buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login,
+.signup {
+  flex: 1;
+}
+
+.login-button,
+.signup-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

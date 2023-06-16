@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>User Login</title>
+  <title>Login Page</title>
 </head>
-
 <body>
-    <h2>User Login</h2>
-    <form id="login-form">
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-        <br><br>
-        <input type="submit" value="Login">
-    </form>
+  <form id="login-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br>
+    <button type="submit">Login</button>
+  </form>
 
-    <script src="js/login.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent form submission
+
+      // Retrieve user input values
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Perform validation on the input data
+      if (!email || !password) {
+          alert('Please fill in all fields.');
+          return;
+      }
+
+      // Send an HTTP request to the server with login credentials
+      var credentials = {
+          email: email,
+          password: password
+      };
+
+      fetch('/login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(credentials)
+      })
+      .then(response => response.json())
+      .then(data => {
+          // Handle the server response
+          if (data.success) {
+              alert('Login successful. Welcome!');
+          } else {
+              alert('Invalid credentials. Please try again.');
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred during login.');
+      });
+    });
+  </script>
 </body>
-
 </html>
